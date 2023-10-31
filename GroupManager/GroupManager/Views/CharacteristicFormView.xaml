@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="GroupManager.Views.CharacteristicFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GroupManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="1" Width="200" HorizontalAlignment="Center">
+            <Button Template="{StaticResource TransparentButton}"
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Grid.Column="1" Grid.Row="2" Width="200" Margin="0,0,0,60" VerticalAlignment="Center">Прізвище:</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}"
+                 VerticalAlignment="Center" 
+                 Grid.Row="2"
+                 Grid.Column="1" Height="35"
+                 Width="200"
+                 
+                 Text="{Binding CharacteristicModel.Lastname}">
+          
+        </TextBox>
+
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25" Visibility="{Binding MilitaryVisibility}">Характеристика для військкомату</TextBlock>
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25" Visibility="{Binding PromVisibility}">Характеристика на випускний</TextBlock>
+        
+        <Viewbox Grid.Row="1" Grid.Column="2" Width="200" Height="50" VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Ellipse Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60" Height="60">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                            <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                            <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="40"
+                           Foreground="White"
+                           >1</TextBlock>
+                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Width="100" Fill="#7889FF" Height="1"/>
+                <Ellipse Grid.Column="2" Stroke="#7889FF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60" Height="60">
+                   
+                </Ellipse>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="40"
+                           Grid.Column="2"
+                           >2</TextBlock>
+            </Grid>
+        </Viewbox>
+        
+        <TextBlock Style="{StaticResource BoldLabel}" Grid.Column="2" Width="200" Grid.Row="2" Margin="0,0,0,60" VerticalAlignment="Center">Ім'я:</TextBlock>
+        <TextBox 
+           Text="{Binding CharacteristicModel.Name}"
+            Template="{StaticResource DefaultTextBox2}" VerticalAlignment="Center" 
+            Grid.Row="2" Grid.Column="2" Height="35" Width="200"
+            >
+
+        </TextBox>
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Grid.Column="3" Width="200" Grid.Row="2" Margin="0,0,0,60" VerticalAlignment="Center">По-батькові:</TextBlock>
+        <TextBox 
+            Text="{Binding CharacteristicModel.Patronymic}"
+            Template="{StaticResource DefaultTextBox2}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" 
+            Height="35"
+            Width="200">
+
+        </TextBox>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="1" Margin="0,0,0,60" Grid.Row="4" VerticalAlignment="Center" TextWrapping="Wrap">Спеціальність</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}" 
+                 Text="{Binding CharacteristicModel.Specialization}"
+                 Width="200" VerticalAlignment="Center"
+                 Grid.Row="4" Grid.Column="1" 
+                 Height="35">
+
+        </TextBox>
+
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="2" Grid.Row="4" Margin="0,0,0,60" VerticalAlignment="Center">Курс:</TextBlock>
+        <TextBox 
+            Text="{Binding CharacteristicModel.Course}"
+            Template="{StaticResource DefaultTextBox2}" Width="200" VerticalAlignment="Center" Grid.Row="4" Grid.Column="2" Height="35">
+
+        </TextBox>
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="3" Grid.Row="4" Margin="0,0,0,60" VerticalAlignment="Center">Група:</TextBlock>
+        <TextBox 
+            Width="200"
+            Text="{Binding CharacteristicModel.Group}"
+            Template="{StaticResource DefaultTextBox2}"  VerticalAlignment="Center" Grid.Row="4" Grid.Column="3" Height="35">
+
+        </TextBox>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
+            <TextBlock 
+                Width="400"
+                Style="{StaticResource BoldLabel}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                TextAlignment="Center"
+                TextWrapping="Wrap"
+                Grid.ColumnSpan="3">
+                Навчається у Відокремленому структурному підрозіділі “Полтавський політехнічний фаховий коледж Національного технічного університету “Харківський політехнічний інститут” з
+
+            </TextBlock>
+            <TextBox Template="{StaticResource DefaultTextBox2}" 
+                     HorizontalAlignment="Center" 
+                     Width="300"
+                     VerticalAlignment="Center"
+                     Margin="0,10,0,0"
+                     Text="{Binding CharacteristicModel.StartStudyDate}"
+                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" 
+                 Height="35">
+
+            </TextBox>
+        </StackPanel>
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="1" Margin="0,0,0,60" Grid.Row="3" VerticalAlignment="Center" TextWrapping="Wrap">Директор</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}" 
+                 Text="{Binding CharacteristicModel.Director}"
+                 Width="200" VerticalAlignment="Center"
+                 Grid.Row="3" Grid.Column="1" 
+                 Height="35">
+
+        </TextBox>
+
+
+        <TextBlock Style="{StaticResource BoldLabel}" Width="200" Grid.Column="3" Margin="0,0,0,60" Grid.Row="3" VerticalAlignment="Center" TextWrapping="Wrap">Керівник групи</TextBlock>
+        <TextBox Template="{StaticResource DefaultTextBox2}" 
+                 Text="{Binding CharacteristicModel.Tutor}"
+                 Width="200" VerticalAlignment="Center"
+                 Grid.Row="3" Grid.Column="3" 
+                 Height="35">
+
+        </TextBox>
+
+
+
+
+
+        <Button Grid.Row="5" Grid.Column="3" Template="{StaticResource TransparentButton}" HorizontalAlignment="Right"
+                Height="50"  Visibility="{Binding ReadonlyVisibility}"
+                x:Name="MoveToNext" Width="200">
+            <Image HorizontalAlignment="Right" Source="/Resources/Images/icons/next.png"></Image>
+        </Button>
+
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="GroupManager.Views.ChooseCharacteristicView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GroupManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1.2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Width="200" HorizontalAlignment="Right">
+            <Button Template="{StaticResource TransparentButton}"
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
+        <TextBlock Margin="0,100,0,0" Grid.Column="1" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" FontFamily="/Resources/Fonts/#Nunito" FontSize="25">
+            Оберіть тип характеристики
+        </TextBlock>
+        <Button Style="{DynamicResource ButtonStyle}" Height="55"
+                    
+                    VerticalAlignment="Center"
+                    x:Name="MilitaryMode"
+                Grid.Row="1" HorizontalAlignment="Left" Margin="50,140,0,0" Grid.Column="1" Width="200">
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">Для військкомату</TextBlock>
+            </DockPanel>
+        </Button>
+
+        <Button Style="{DynamicResource ButtonStyle}" Height="55"
+                    VerticalAlignment="Center"
+                    x:Name="PromMode"
+                Grid.Row="1" HorizontalAlignment="Right" Margin="0,140,50,0" Grid.Column="1" Width="200">
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" FontSize="23" HorizontalAlignment="Center">На випуск</TextBlock>
+            </DockPanel>
+        </Button>
+
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="GroupManager.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GroupManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#F0F1FF">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Template="{StaticResource TransparentButton}"  
+                 Width="35" Height="35"
+                 x:Name="Back" HorizontalAlignment="Left" >
+                <Image Source="/Resources/Images/icons/next2.png" ></Image>
+            </Button>
+            <TextBlock Foreground="#7A8BFF" Style="{StaticResource CoursesLabel}" HorizontalAlignment="Center">UNITUP</TextBlock>
+        </DockPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" 
+                       VerticalAlignment="Top" Grid.Row="1" 
+                       Margin="0,100,0,0"
+                       HorizontalAlignment="Center" 
+                       FontFamily="/Resources/Fonts/#Nunito" 
+                       FontSize="25">Автор програми: Бабич Ангеліна Олександрівна</TextBlock>
+            <TextBlock TextWrapping="WrapWithOverflow" 
+                       VerticalAlignment="Top" Grid.Row="1" 
+                       TextAlignment="Center"
+                       Margin="0,30,0,0"
+                       HorizontalAlignment="Center" 
+                       FontFamily="/Resources/Fonts/#Nunito" 
+                       FontSize="20">UnitUp - додаток, який містить дані про здобувачів освіти, їх досягнення та допомагає в процесі формування характеристик для військкомату та випуску</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

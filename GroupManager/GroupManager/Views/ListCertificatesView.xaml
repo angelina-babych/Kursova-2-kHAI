@@ -1,0 +1,190 @@
+﻿<UserControl x:Class="GroupManager.Views.ListCertificatesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GroupManager.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#F0F1FF">
+    <UserControl.Resources>
+        <Style x:Key="_ListBoxItemStyle" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border"
+                                Padding="2"
+                                
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="#7284FF"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSelected" Value="True"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid Name="GridLayout">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.14*"></ColumnDefinition>
+            <ColumnDefinition Width="0.13*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.14*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Style="{DynamicResource CoursesLabel}"
+                   HorizontalAlignment="Center" Foreground="#7284FF">UNITUP</TextBlock>
+        <Button Grid.Column="0" Template="{StaticResource TransparentButton}"
+                HorizontalAlignment="Right"
+                Width="35" Height="35"
+                x:Name="Back">
+            <Image Source="/Resources/Images/icons/back-button.png" ></Image>
+        </Button>
+        <Ellipse Grid.Column="3" HorizontalAlignment="Center" Width="50" Height="50">
+            <Ellipse.Fill>
+                <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                    <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                    <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                </LinearGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Button Panel.ZIndex="1" Grid.Column="2" Width="30" Height="30" Background="Transparent" 
+                BorderBrush="Transparent"
+                HorizontalAlignment="Right"
+                Template="{StaticResource TransparentButton}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <cal:ActionMessage MethodName="SearchByCertificateName">
+                        <cal:Parameter Value="{Binding Path=Text, ElementName=searchTextBox}"></cal:Parameter>
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Image Source="/Resources/Images/icons/search.png"></Image>
+        </Button>
+        <TextBlock Grid.Column="2" FontSize="20" 
+                   FontFamily="PT Sans"
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Panel.ZIndex="1"
+                   Margin="20"
+                   x:Name="placeholderTextBlock"
+                   Cursor="Hand"
+                   MouseLeftButtonDown="placeholderTextBlock_MouseLeftButtonDown"
+                   >Пошук...</TextBlock>
+        <TextBox
+                 Height="35"
+                 Grid.Column="2"
+                 Padding="5"
+                 x:Name="searchTextBox"
+                 PreviewGotKeyboardFocus="TextBox_PreviewGotKeyboardFocus"
+                 LostFocus="TextBox_LostFocus">
+            <TextBox.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="10" BorderBrush="Black" BorderThickness="0.5"
+                            Background="White">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Style="{DynamicResource CoursesLabel}" 
+                   FontSize="30"
+                   HorizontalAlignment="Left"
+                   FontFamily="Nunito"
+                   Foreground="#7284FF"
+                   Margin="30,0,0,0" Text="{Binding CurrentStudent.Name}"></TextBlock>
+            <TextBlock Style="{DynamicResource CoursesLabel}" 
+                   FontSize="30"
+                   HorizontalAlignment="Left"
+                   FontFamily="Nunito"
+                   Foreground="#7284FF"
+                   Margin="10,0,0,0" Text="{Binding CurrentStudent.Lastname}"></TextBlock>
+            <TextBlock Style="{DynamicResource CoursesLabel}" 
+                   FontSize="30"
+                   HorizontalAlignment="Left"
+                   FontFamily="Nunito"
+                   Foreground="#7284FF"
+                   Margin="10,0,0,0" Text=":сертифікати"></TextBlock>
+        </StackPanel>
+        <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
+                Width="35"
+                Height="35"
+                Template="{StaticResource TransparentButton}"
+                x:Name="AddNewCertificates">
+
+            <Image Source="/Resources/Images/icons/plus_black.png"></Image>
+        </Button>
+        <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" 
+                  Background="Transparent"
+                  BorderThickness="0"
+                  ItemsSource="{Binding Certificates}"
+                  SelectedItem="{Binding CurrentCertificate}"
+                  x:Name="StudentsList"
+                  Margin="0,0,40,0"
+                  MouseDoubleClick="StudentsList_MouseDoubleClick"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  ItemContainerStyle="{StaticResource _ListBoxItemStyle}">
+
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="Template">
+                    <Border BorderThickness="0.4" 
+                                BorderBrush="#7889FF" 
+                                CornerRadius="10" 
+                                Background="White" 
+                                Margin="30,10,0,0"
+                                Padding="10,10,0,10"
+                                Width="{Binding ElementName=StudentsList,Path=ActualWidth,
+                            Converter={StaticResource widthConverter},ConverterParameter=50}">
+                        <DockPanel Cursor="Hand">
+
+                            <Ellipse HorizontalAlignment="Left" Width="50" Height="50" VerticalAlignment="Center"
+                                     Margin="20,0,0,0">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush StartPoint="1 1" EndPoint="0 0">
+                                        <GradientStop Color="#7284FF" Offset="0.1"></GradientStop>
+                                        <GradientStop Color="#A0ABFB" Offset="0.9"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock FontFamily="/Resources/Fonts/#PT Sans" FontSize="30" Margin="20,0,0,0" VerticalAlignment="Center"
+                            Text="{Binding 
+                            RelativeSource={RelativeSource AncestorType=ListViewItem, Mode=FindAncestor}
+                            ,Converter={StaticResource listViewIndexConverter}}"></TextBlock>
+                            <TextBlock Text="{Binding Header}" FontFamily="/Resources/Fonts/#PT Sans" FontSize="30"
+                                       Margin="30,0,0,0"
+                                       Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                            <Button Width="30" Height="30" Margin="0,0,20,0" 
+                                    Template="{StaticResource TransparentButton}"
+                                    cal:Message.Attach="DeleteCertificate"
+                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Image Source="/Resources/Images/icons/remove.png"></Image>
+
+                            </Button>
+                        </DockPanel>
+                    </Border>
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Grid>
+</UserControl>
