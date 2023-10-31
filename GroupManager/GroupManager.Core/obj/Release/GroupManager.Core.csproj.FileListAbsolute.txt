@@ -1,0 +1,12 @@
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\GroupManager.Core.dll.config
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\GroupManager.Core.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\GroupManager.Core.pdb
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\EntityFramework.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\EntityFramework.SqlServer.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\EntityFramework.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\bin\Release\EntityFramework.SqlServer.xml
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Release\GroupManager.Core.csproj.AssemblyReference.cache
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Release\GroupManager.Core.csproj.CoreCompileInputs.cache
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Release\GroupManager.Core.csproj.CopyComplete
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Release\GroupManager.Core.dll
+C:\WebHunters\FridgeWebHunters\UnitUp\GroupManager\GroupManager.Core\obj\Release\GroupManager.Core.pdb
